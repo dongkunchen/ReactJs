@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test"></div>
+
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+    //創建函數式(組件首字母要大寫)
+    function MyComponent(){
+        console.log(this);//次處的this是undefined
+        return <h2>我是用函數定義的組件(適用於件單組件定義)</h2>
+    }
+    //渲染組件到頁面(組件要用標籤)
+    ReactDOM.render(<MyComponent/>,document.getElementById('test'))   
+    
+    </script>
+    
+</body>
+</html>

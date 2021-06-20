@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+        //1.創建組件
+        class Weather extends React.Component {
+            constructor(props) {
+                super(props);
+                //初始化狀態
+                this.state = { isHot: false,wind:'微風' }
+                this.changeWeather = this.changeWeather.bind(this)
+            }
+            render() {
+                // console.log(this)//clg
+                // return <h1>今天天氣很{this.state.isHot?'炎熱':'涼爽'}</h1>
+                //讀取狀態
+                const { isHot,wind } = this.state
+                // return <h1 id="title">今天天氣很{isHot ? '炎熱' : '涼爽'}</h1>
+                return <h1 onClick={this.changeWeather}>今天天氣很{isHot ? '炎熱' : '涼爽'},{wind}</h1>
+            }
+            changeWeather() {
+                //獲取原來的值
+            const isHot = this.state.isHot
+                //狀態要用setState更改 後面!isHot是原來的值取反
+                //且是更新是一種合併 不是替換
+            this.setState({isHot:!isHot})
+        }
+
+        }
+        //2.渲染組件到頁面
+        ReactDOM.render(<Weather />, document.getElementById('test'))
+
+        // const title = document.getElementById('title')
+        // title.addEventListener('click',()=>{
+        //     console.log('標題被點擊了');
+        // })
+        // const title = document.getElementById('title')
+        // title.onclick = () =>{
+        //     console.log('標題被點擊了');
+        // }
+        function demo() {
+            console.log('標題被點擊了')
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 創建容器 -->
+    <div id="test"></div>
+
+    <!-- 導入核心庫 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 導入操作DOM庫 -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 引入babel將jsx轉換成js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <!-- type絕對不能打javascript要打bebal -->
+    <script type="text/babel">
+    /*
+        {}只能放js表達式
+
+    */
+    //模擬數據
+    const data= ['Angular','React','Vue']  
+    //創建虛擬DOM
+    const VDBM = (
+        <div>
+        <h1>前端js框架列表</h1>
+        <ul>
+            {
+                data.map((item,index)=>{
+                    return <li key={index}>{item}</li>
+                })
+            }
+        </ul>    
+        </div>
+    )
+    //選染虛擬DOM
+    ReactDOM.render(VDBM,document.getElementById('test'))
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+        class Weather extends React.Component {
+            //初始化狀態
+            state = { isHot: false,wind:'微風' } //必須是對象{}不能數組[]
+            render() {
+                const { isHot,wind } = this.state
+                return <h1 onClick={this.changeWeather}>今天天氣很{isHot ? '炎熱' : '涼爽'},{wind}</h1>
+            }
+            //直接使用賦值語句 在利用箭頭函數可以取得this的特性
+            changeWeather = () => {
+            const isHot = this.state.isHot
+            this.setState({isHot:!isHot})
+        }
+
+        }
+        ReactDOM.render(<Weather />, document.getElementById('test'))
+
+       
+        function demo() {
+            console.log('標題被點擊了')
+
+        }
+    </script>
+</body>
+
+</html>
